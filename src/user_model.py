@@ -27,16 +27,14 @@ class UserModel:
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'creation_date_time': self.creation_date_time
-        }
+            'creation_date_time': self.creation_date_time}
 
     @staticmethod
     def from_json(json_data: dict):
         um = UserModel(
             first_name=json_data['first_name'],
             last_name=json_data['last_name'],
-            email=json_data['email']
-        )
+            email=json_data['email'])
         
         if 'creation_date_time' in json_data:
             um.creation_date_time = json_data['creation_date_time']
