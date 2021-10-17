@@ -22,6 +22,7 @@ while True:
         last_name = input('qual o último nome da pessoa?')
         email = input('Qual o endereço de e-mail?')
         ds.create(first_name=first_name, last_name=last_name, email=email)
+    
     elif opcao == 2:
         user_list = ds.database
         user_list.sort(key=lambda
@@ -30,6 +31,16 @@ while True:
             print(f"Nome: {user['first_name']}")
             print(f"Sobrenome: {user['last_name']}")
             print(f"Email: {user['email']}\n\n")
+
+    elif opcao == 3:
+        user_list = ds.database
+        user_list.sort(key=lambda
+            item:item['first_name'], reverse=False)
+        for user in user_list:
+            print(f"Nome: {user['first_name']}")
+            print(f"Sobrenome: {user['last_name']}")
+            print(f"Email: {user['email']}\n\n")
+
     elif opcao == 4:
         first_name = input('Digite o primeiro nome do usuário desejado: ')
         last_name = input('Digite o sobrenome do usuário desejado: ')
@@ -41,7 +52,7 @@ while True:
                 print(f"Nome: {user['first_name']} {user['last_name']}")
 
     elif opcao == 7:
-        break
+        break 
 
 
 print('Obrigado por usar nosso gerenciador de eventos!')
