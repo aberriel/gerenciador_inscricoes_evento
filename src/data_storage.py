@@ -42,7 +42,7 @@ class DataStorage:
     def delete(self, email):
         result = self.get_email(email=email)
         if not result:
-            raise Exception(f'Usuário inexistente com o e-mail {email}')
+            raise Exception(f'Usuário inexistente com o e-mail {email} ')
         else:
             self.database.remove(result)
             
