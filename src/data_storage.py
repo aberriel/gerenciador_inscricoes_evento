@@ -12,7 +12,9 @@ class DataStorage:
         if item_found:
             raise Exception(f'Usuário já cadastrado com o e-mail {email}')
         user_data = UserModel(first_name, last_name, email)
-        self.database.append(user_data.to_json())
+        user_data_json = user_data.to_json()
+        self.database.append(user_data_json)
+        return user_data_json
 
     def update(self, email, first_name, last_name):
         user_found = next((x for x in self.database if x['email'] == email), None)
@@ -29,6 +31,18 @@ class DataStorage:
             if user['first_name'] == first_name and user['last_name'] == last_name:
                 result.append(user)
         return result
-    
+
+    def get_email(self, email):
+
+        for user in self.database:
+            if user['email'] == email:
+                return user
+        return None
+
     def delete(self, email):
-        pass
+        result = self.get_email(email=email)
+        if not result:
+            raise Exception(f'Usuário inexistente com o e-mail {email} ')
+        else:
+            self.database.remove(result)
+            

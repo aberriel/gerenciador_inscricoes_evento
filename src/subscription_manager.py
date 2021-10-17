@@ -16,17 +16,26 @@ while True:
     print('7 - Sair')
 
     opcao = int(input())
-    
+
     if opcao == 1:
-        first_name = input('Qual o primeiro nome do usuário?')
-        last_name = input('qual o último nome da pessoa?')
-        email = input('Qual o endereço de e-mail?')
-        ds.create(first_name=first_name, last_name=last_name, email=email)
-    
+        first_name = input('Qual o primeiro nome do usuário? ')
+        last_name = input('qual o último nome da pessoa? ')
+        email = input('Qual o endereço de e-mail? ')
+        print('\n Cadastrando Usuário \n')
+
+        try:
+            result = ds.create(first_name=first_name,
+                               last_name=last_name, email=email)
+            print('Usuário cadastrado com sucesso:')
+            print(
+                f"({result['creation_date_time'].strftime('%d/%m/%Y %H:%M:%S')}) {result['first_name']} {result['last_name']}\n\n")
+        except Exception as exc:
+            print(
+                f'Ocorreu o seguinte erro ao tentar cadastrar o usuário de e-mail {email}: {exc}\n')
     elif opcao == 2:
         user_list = ds.database
         user_list.sort(key=lambda
-            item:item['creation_date_time'], reverse=False)
+                       item: item['creation_date_time'], reverse=False)
         for user in user_list:
             print(f"Nome: {user['first_name']}")
             print(f"Sobrenome: {user['last_name']}")
@@ -35,7 +44,7 @@ while True:
     elif opcao == 3:
         user_list = ds.database
         user_list.sort(key=lambda
-            item:item['first_name'], reverse=False)
+                       item: item['first_name'], reverse=False)
         for user in user_list:
             print(f"Nome: {user['first_name']}")
             print(f"Sobrenome: {user['last_name']}")
@@ -50,9 +59,16 @@ while True:
         else:
             for user in result:
                 print(f"Nome: {user['first_name']} {user['last_name']}")
+    elif opcao == 5:
+        email = input('Digite o email desejado: ')
+        try:
+            ds.delete(email)
+            print('Usuário deste email deletado com sucesso!')
+        except Exception as exc:
+            print(f'Ocorreu o erro: {exc}')
 
     elif opcao == 7:
-        break 
+        break
 
 
 print('Obrigado por usar nosso gerenciador de eventos!')
