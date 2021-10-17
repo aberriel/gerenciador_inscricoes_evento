@@ -23,9 +23,6 @@ class DataStorage:
         user_data.update_name(first_name, last_name)
         self.database['email'] = user_data.to_json()
     
-    def list_all(self, sort_type):
-        pass
-    
     def get(self, first_name, last_name):
         pass
     
