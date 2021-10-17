@@ -29,6 +29,18 @@ class DataStorage:
             if user['first_name'] == first_name and user['last_name'] == last_name:
                 result.append(user)
         return result
-    
+
+    def get_email(self, email):
+
+        for user in self.database:
+            if user['email'] == email:
+                return user
+        return None
+
     def delete(self, email):
-        pass
+        result = self.get_email(email=email)
+        if not result:
+            raise Exception(f'Usuário inexistente com o e-mail {email}')
+        else:
+            self.database.remove(result)
+            

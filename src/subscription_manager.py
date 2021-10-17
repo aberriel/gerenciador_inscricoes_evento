@@ -39,7 +39,14 @@ while True:
         else:
             for user in result:
                 print(f"Nome: {user['first_name']} {user['last_name']}")
-
+    elif opcao == 5:
+        email = input('Digite o email desejado: ')
+        try:
+            ds.delete(email)
+            print('Usuário deste email deletado com sucesso!')
+        except Exception as exc:
+            print(f'Ocorreu o erro: {exc}')
+        
     elif opcao == 7:
         break
 
