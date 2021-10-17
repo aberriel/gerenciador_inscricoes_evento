@@ -21,7 +21,7 @@ while True:
         first_name = input('Qual o primeiro nome do usuário?')
         last_name = input('qual o último nome da pessoa?')
         email = input('Qual o endereço de e-mail?')
-        ds.create(first_name, last_name, email)
+        ds.create(first_name=first_name, last_name=last_name, email=email)
     elif opcao == 2:
         user_list = ds.database
         user_list.sort(key=lambda
@@ -30,11 +30,19 @@ while True:
             print(f"Nome: {user['first_name']}")
             print(f"Sobrenome: {user['last_name']}")
             print(f"Email: {user['email']}\n\n")
-
+    elif opcao == 4:
+        first_name = input('Digite o primeiro nome do usuário desejado: ')
+        last_name = input('Digite o sobrenome do usuário desejado: ')
+        result = ds.get(first_name=first_name, last_name=last_name)
+        if len(result) == 0:
+            print("Nenhum usuário cadastrado com esse nome!")
+        else:
+            for user in result:
+                print(f"Nome: {user['first_name']} {user['last_name']}")
 
     elif opcao == 7:
         break
 
 
-print('Obrigado por usar nosso gerenciador de exentos!')
-print('Até a Próxim!!!')
+print('Obrigado por usar nosso gerenciador de eventos!')
+print('Até a Próxima!!!')
