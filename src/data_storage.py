@@ -27,7 +27,11 @@ class DataStorage:
         pass
     
     def get(self, first_name, last_name):
-        pass
+        result = []
+        for user in self.database:
+            if user['first_name'] == first_name and user['last_name'] == last_name:
+                result.append(user)
+        return result
     
     def delete(self, email):
         pass
