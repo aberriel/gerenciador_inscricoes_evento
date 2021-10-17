@@ -1,6 +1,4 @@
 from data_storage import DataStorage
-from tkinter import *
-from tkinter import messagebox
 
 
 ds = DataStorage()
