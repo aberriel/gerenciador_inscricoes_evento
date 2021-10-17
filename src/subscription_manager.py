@@ -18,10 +18,17 @@ while True:
     opcao = int(input())
     
     if opcao == 1:
-        first_name = input('Qual o primeiro nome do usuário?')
-        last_name = input('qual o último nome da pessoa?')
-        email = input('Qual o endereço de e-mail?')
-        ds.create(first_name=first_name, last_name=last_name, email=email)
+        first_name = input('Qual o primeiro nome do usuário? ')
+        last_name = input('qual o último nome da pessoa? ')
+        email = input('Qual o endereço de e-mail? ')
+        print('\n Cadastrando Usuário \n')
+        
+        try:
+            result = ds.create(first_name=first_name, last_name=last_name, email=email)
+            print('Usuário cadastrado com sucesso:')
+            print(f"({result['creation_date_time'].strftime('%d/%m/%Y %H:%M:%S')}) {result['first_name']} {result['last_name']}\n\n")
+        except Exception as exc:
+            print(f'Ocorreu o seguinte erro ao tentar cadastrar o usuário de e-mail {email}: {exc}\n')
     elif opcao == 2:
         user_list = ds.database
         user_list.sort(key=lambda
