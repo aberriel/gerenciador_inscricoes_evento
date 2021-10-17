@@ -9,7 +9,8 @@ class DataStorage:
         pass
     
     def create(self, first_name, last_name, email):
-        if email in self.database:
+        item_found = [x for x in self.database if x['email'] == email]
+        if item_found:
             raise Exception(f'Usuário já cadastrado com o e-mail {email}')
         user_data = UserModel(first_name, last_name, email)
         self.database[user_data.email] = user_data.to_json()
