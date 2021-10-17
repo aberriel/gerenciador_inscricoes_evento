@@ -23,7 +23,15 @@ while True:
         email = input('Qual o endereço de e-mail?')
         ds.create(first_name, last_name, email)
     elif opcao == 2:
-        pass
+        user_list = ds.database
+        user_list.sort(key=lambda
+            item:item['creation_date_time'], reverse=False)
+        for user in user_list:
+            print(f"Nome: {user['first_name']}")
+            print(f"Sobrenome: {user['last_name']}")
+            print(f"Email: {user['email']}\n\n")
+
+
     elif opcao == 7:
         break
 
