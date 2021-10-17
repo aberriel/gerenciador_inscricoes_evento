@@ -67,6 +67,19 @@ while True:
         except Exception as exc:
             print(f'Ocorreu o erro: {exc}')
 
+    elif opcao == 6:
+        email = input('Digite o email do usuario? ')
+        first_name = input('Qual o primeiro nome do usuario? ')
+        last_name = input('Digite o sobrenome do usuario? ')
+        try:
+            result = ds.update(
+                email=email, first_name=first_name, last_name=last_name)
+            print('Usuário atualizado com sucesso:')
+            print(
+                f"({result['creation_date_time'].strftime('%d/%m/%Y %H:%M:%S')}) {result['first_name']} {result['last_name']}\n\n")
+        except Exception as exc:
+            print(f'Ocorreu o erro: {exc}')
+
     elif opcao == 7:
         break
 
