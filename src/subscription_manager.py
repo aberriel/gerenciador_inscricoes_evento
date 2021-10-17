@@ -25,8 +25,7 @@ while True:
         try:
             result = ds.create(first_name=first_name, last_name=last_name, email=email)
             print('Usuário cadastrado com sucesso:')
-            print(f"({result['creation_date_time'].strftime('%d/%m/%Y %H:%M:%S')}) 
-                  {result['first_name']} {result['last_name']} \n\n")
+            print(f"({result['creation_date_time'].strftime('%d/%m/%Y %H:%M:%S')}) {result['first_name']} {result['last_name']} \n\n")
         except Exception as exc:
             print(f'Ocorreu o seguinte erro ao tentar cadastrar o usuário de e-mail {email}: {exc}\n')
 
